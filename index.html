@@ -6,6 +6,9 @@
   <title>NEXUS MUJ | Official Club</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
   <style>
     * {
       margin: 0;
@@ -26,7 +29,7 @@
       color: inherit;
     }
 
-    /* Floating Social Sidebar - SVGs */
+    /* Floating Social Sidebar */
     .social-sidebar {
       position: fixed;
       left: 28px;
@@ -183,6 +186,7 @@
       background: linear-gradient(90deg, #fb923c, #f97316);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      animation: pulseGlow 4s ease-in-out infinite;
     }
 
     .hero-content p {
@@ -211,6 +215,7 @@
                   linear-gradient(135deg, #38bdf8, #a855f7, #f97316) border-box;
       border: 2px solid transparent;
       box-shadow: 0 0 60px rgba(168, 85, 247, 0.25);
+      animation: spinOrbit 14s linear infinite;
     }
 
     .portal-logo {
@@ -367,11 +372,6 @@
       background-size: cover;
       background-position: center;
       position: relative;
-      transition: transform 0.5s ease;
-    }
-
-    .event-card:hover .event-banner {
-      transform: scale(1.05);
     }
 
     .event-date {
@@ -464,7 +464,7 @@
       box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
     }
 
-    /* Interactive Modal */
+    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -487,18 +487,6 @@
       max-width: 450px;
       width: 90%;
       position: relative;
-      animation: modalPop 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-
-    @keyframes modalPop {
-      from {
-        opacity: 0;
-        transform: scale(0.8);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
     }
 
     .close-modal {
@@ -508,14 +496,8 @@
       cursor: pointer;
       color: #94a3b8;
       font-size: 1.2rem;
-      transition: color 0.2s ease;
     }
 
-    .close-modal:hover {
-      color: #fff;
-    }
-
-    /* Footer */
     footer {
       text-align: center;
       padding: 40px 20px;
@@ -524,48 +506,15 @@
       font-size: 0.85rem;
     }
 
-    /* ==========================================
-       ADDED KEYFRAME ANIMATIONS BELOW
-       ========================================== */
-
-    /* 1. Continuous Rotating Portal Ring */
+    /* Keyframes */
     @keyframes spinOrbit {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
 
-    .portal-ring {
-      animation: spinOrbit 14s linear infinite;
-    }
-
-    /* 2. Pulsing Heading Glow */
     @keyframes pulseGlow {
-      0%, 100% {
-        filter: drop-shadow(0 0 8px rgba(251, 146, 60, 0.3));
-      }
-      50% {
-        filter: drop-shadow(0 0 20px rgba(249, 115, 22, 0.6));
-      }
-    }
-
-    .gradient-orange {
-      animation: pulseGlow 4s ease-in-out infinite;
-    }
-
-    /* 3. Page Reveal Entrance Animation */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .hero-content, .hero-visual, .stats-bar, .domain-card, .event-card, .form-container {
-      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      0%, 100% { filter: drop-shadow(0 0 8px rgba(251, 146, 60, 0.3)); }
+      50% { filter: drop-shadow(0 0 20px rgba(249, 115, 22, 0.6)); }
     }
   </style>
 </head>
@@ -593,7 +542,7 @@
   </nav>
 
   <section class="hero">
-    <div class="hero-content">
+    <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
       <div class="tagline">UNITING MINDS. CREATING IMPACT.</div>
       <h1>Ideas.<br><span class="gradient-orange">Innovation.</span><br>Impact.</h1>
       <p>NEXUS MUJ is the official student club that connects passion with purpose. We collaborate, create, and contribute towards a better tomorrow.</p>
@@ -603,7 +552,7 @@
       </div>
     </div>
 
-    <div class="hero-visual">
+    <div class="hero-visual" data-aos="zoom-in" data-aos-duration="1200">
       <div class="portal-ring"></div>
       <div class="portal-logo">
         <div class="logo-icon" style="width:50px; height:50px; margin: 0 auto;"></div>
@@ -613,7 +562,7 @@
     </div>
   </section>
 
-  <section class="stats-bar">
+  <section class="stats-bar" data-aos="fade-up" data-aos-duration="1000">
     <div class="stat-item">
       <h3>500+</h3>
       <p>Active Members</p>
@@ -634,7 +583,7 @@
 
   <section id="about" class="section-container">
     <div class="about-layout">
-      <div class="about-text">
+      <div class="about-text" data-aos="fade-right">
         <div class="section-tag">ABOUT US</div>
         <h2 class="section-title">What is NEXUS?</h2>
         <p>We are a diverse community of innovators, creators, and leaders from Manipal University Jaipur coming together to learn, build, and grow.</p>
@@ -642,27 +591,27 @@
       </div>
 
       <div id="domains" class="domains-grid">
-        <div class="domain-card" onclick="registerDomain('Tech & Dev')">
+        <div class="domain-card" data-aos="fade-up" data-aos-delay="100" onclick="registerDomain('Tech & Dev')">
           <div class="domain-icon"><i class="fas fa-code"></i></div>
           <h4>Tech & Dev</h4>
           <p>Building solutions, exploring tech & pushing boundaries.</p>
         </div>
-        <div class="domain-card" onclick="registerDomain('Design & Media')">
+        <div class="domain-card" data-aos="fade-up" data-aos-delay="200" onclick="registerDomain('Design & Media')">
           <div class="domain-icon"><i class="fas fa-palette"></i></div>
           <h4>Design & Media</h4>
           <p>Creating visuals, stories, and experiences that inspire.</p>
         </div>
-        <div class="domain-card" onclick="registerDomain('Marketing')">
+        <div class="domain-card" data-aos="fade-up" data-aos-delay="300" onclick="registerDomain('Marketing')">
           <div class="domain-icon"><i class="fas fa-bullhorn"></i></div>
           <h4>Marketing</h4>
           <p>Strategizing, promoting, and creating impact that matters.</p>
         </div>
-        <div class="domain-card" onclick="registerDomain('Management')">
+        <div class="domain-card" data-aos="fade-up" data-aos-delay="400" onclick="registerDomain('Management')">
           <div class="domain-icon"><i class="fas fa-users-cog"></i></div>
           <h4>Management</h4>
           <p>Leading ideas, managing events, and building leaders.</p>
         </div>
-        <div class="domain-card" onclick="registerDomain('Social Impact')">
+        <div class="domain-card" data-aos="fade-up" data-aos-delay="500" onclick="registerDomain('Social Impact')">
           <div class="domain-icon"><i class="fas fa-heart"></i></div>
           <h4>Social Impact</h4>
           <p>Initiatives that give back and bring positive change.</p>
@@ -672,11 +621,11 @@
   </section>
 
   <section id="events" class="section-container">
-    <div class="section-tag">UPCOMING EVENTS</div>
-    <h2 class="section-title">What's Next?</h2>
+    <div class="section-tag" data-aos="fade-up">UPCOMING EVENTS</div>
+    <h2 class="section-title" data-aos="fade-up">What's Next?</h2>
 
     <div class="events-grid">
-      <div class="event-card">
+      <div class="event-card" data-aos="flip-left" data-aos-delay="100">
         <div class="event-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=500');">
           <div class="event-date"><span>24</span><small>MAY</small></div>
         </div>
@@ -690,7 +639,7 @@
         </div>
       </div>
 
-      <div class="event-card">
+      <div class="event-card" data-aos="flip-left" data-aos-delay="200">
         <div class="event-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=500');">
           <div class="event-date"><span>07</span><small>JUN</small></div>
         </div>
@@ -704,7 +653,7 @@
         </div>
       </div>
 
-      <div class="event-card">
+      <div class="event-card" data-aos="flip-left" data-aos-delay="300">
         <div class="event-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1531482615713-2afd69097998?w=500');">
           <div class="event-date"><span>21</span><small>JUN</small></div>
         </div>
@@ -718,7 +667,7 @@
         </div>
       </div>
 
-      <div class="event-card">
+      <div class="event-card" data-aos="flip-left" data-aos-delay="400">
         <div class="event-banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=500');">
           <div class="event-date"><span>05</span><small>JUL</small></div>
         </div>
@@ -735,12 +684,12 @@
   </section>
 
   <section id="join" class="section-container">
-    <div style="text-align:center; margin-bottom: 40px;">
+    <div style="text-align:center; margin-bottom: 40px;" data-aos="fade-up">
       <div class="section-tag">BE A PART OF SOMETHING BIGGER</div>
       <h2 class="section-title">Join Nexus MUJ</h2>
     </div>
 
-    <div class="form-container">
+    <div class="form-container" data-aos="zoom-in-up">
       <form id="joinForm" onsubmit="handleFormSubmit(event)">
         <div class="form-group">
           <label>Full Name</label>
@@ -793,7 +742,15 @@
     <p>&copy; 2026 Nexus Club MUJ. All rights reserved. | Official Student Body of Manipal University Jaipur.</p>
   </footer>
 
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
+    // Initialize AOS Scroll Animations
+    AOS.init({
+      duration: 800,
+      once: false, // Animates every time you scroll up and down
+      mirror: true
+    });
+
     function openEventModal(eventName) {
       document.getElementById('modalTitle').innerText = 'Register for ' + eventName;
       document.getElementById('eventModal').style.display = 'flex';
