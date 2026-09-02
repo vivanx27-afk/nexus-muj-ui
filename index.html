@@ -5,12 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NEXUS MUJ | Official Club</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Plus Jakarta Sans', sans-serif;
+      scroll-behavior: smooth;
     }
 
     body {
@@ -24,46 +26,56 @@
       color: inherit;
     }
 
-    /* Floating Social Sidebar */
+    /* Floating Social Sidebar - SVGs */
     .social-sidebar {
       position: fixed;
-      left: 24px;
+      left: 28px;
       top: 50%;
       transform: translateY(-50%);
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 22px;
       z-index: 100;
       color: #94a3b8;
-      font-size: 0.9rem;
+      font-size: 1.1rem;
+    }
+
+    .social-sidebar a {
+      transition: color 0.2s, transform 0.2s;
     }
 
     .social-sidebar a:hover {
       color: #38bdf8;
+      transform: scale(1.15);
     }
 
-    /* Navbar */
+    /* Fixed Glass Navbar */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 24px 80px;
-      position: relative;
-      z-index: 10;
+      padding: 20px 80px;
+      position: sticky;
+      top: 0;
+      background: rgba(6, 9, 19, 0.85);
+      backdrop-filter: blur(16px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       font-weight: 800;
       font-size: 1.2rem;
       letter-spacing: 1px;
+      cursor: pointer;
     }
 
     .logo-icon {
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
       background: linear-gradient(135deg, #a855f7, #3b82f6);
       clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
     }
@@ -83,26 +95,53 @@
       color: #cbd5e1;
     }
 
-    .nav-links a:hover, .nav-links a.active {
-      color: #fff;
+    .nav-links a {
+      transition: color 0.2s;
     }
 
-    .nav-links a.active {
-      border-bottom: 2px solid #38bdf8;
-      padding-bottom: 4px;
+    .nav-links a:hover {
+      color: #38bdf8;
     }
 
     .btn-gradient {
       background: linear-gradient(90deg, #7c3aed, #f97316);
       color: #fff;
-      padding: 10px 22px;
+      padding: 10px 24px;
       border-radius: 30px;
       font-size: 0.85rem;
       font-weight: 600;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+      gap: 8px;
+    }
+
+    .btn-gradient:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(124, 58, 237, 0.6);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 10px 24px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #fff;
+      background: transparent;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: #38bdf8;
     }
 
     /* Hero Section */
@@ -110,12 +149,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 40px 80px 80px 80px;
-      position: relative;
+      padding: 60px 80px 80px 80px;
     }
 
     .hero-content {
-      max-width: 500px;
+      max-width: 520px;
     }
 
     .tagline {
@@ -147,28 +185,11 @@
       margin-bottom: 32px;
     }
 
-    .hero-btns {
-      display: flex;
-      gap: 16px;
-    }
-
-    .btn-outline {
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 10px 22px;
-      border-radius: 30px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #fff;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    /* Portal Circle Visual */
+    /* Glowing Portal Ring */
     .hero-visual {
       position: relative;
-      width: 450px;
-      height: 450px;
+      width: 420px;
+      height: 420px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -179,10 +200,10 @@
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      border: 2px solid transparent;
       background: linear-gradient(#060913, #060913) padding-box,
                   linear-gradient(135deg, #38bdf8, #a855f7, #f97316) border-box;
-      box-shadow: 0 0 50px rgba(168, 85, 247, 0.3);
+      border: 2px solid transparent;
+      box-shadow: 0 0 60px rgba(168, 85, 247, 0.25);
     }
 
     .portal-logo {
@@ -191,45 +212,39 @@
     }
 
     .portal-logo h2 {
-      font-size: 2rem;
+      font-size: 2.2rem;
       letter-spacing: 4px;
       margin-top: 10px;
     }
 
-    .portal-logo span {
-      font-size: 0.8rem;
-      color: #f97316;
-      letter-spacing: 6px;
-    }
-
-    /* Stats Bar */
+    /* Stats Section */
     .stats-bar {
-      margin: 0 80px;
+      margin: 0 80px 100px 80px;
       background: rgba(15, 23, 42, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(12px);
       border-radius: 16px;
-      padding: 24px 40px;
+      padding: 28px 40px;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       text-align: center;
     }
 
     .stat-item h3 {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       font-weight: 800;
-      color: #fff;
+      color: #38bdf8;
     }
 
     .stat-item p {
       color: #64748b;
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       margin-top: 4px;
     }
 
-    /* Sections Shared Styling */
+    /* Main Sections */
     .section-container {
-      padding: 100px 80px;
+      padding: 0 80px 100px 80px;
     }
 
     .section-tag {
@@ -244,33 +259,27 @@
     .section-title {
       font-size: 2.2rem;
       font-weight: 800;
-      margin-bottom: 40px;
+      margin-bottom: 36px;
     }
 
     /* Domains Grid */
     .about-layout {
       display: grid;
-      grid-template-columns: 1fr 2fr;
+      grid-template-columns: 1fr 2.2fr;
       gap: 40px;
-      align-items: center;
+      align-items: start;
     }
 
     .about-text p {
       color: #94a3b8;
       font-size: 0.95rem;
       line-height: 1.6;
-      margin-bottom: 20px;
-    }
-
-    .about-text a {
-      color: #f97316;
-      font-size: 0.85rem;
-      font-weight: 600;
+      margin-bottom: 24px;
     }
 
     .domains-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
 
@@ -278,37 +287,32 @@
       background: rgba(15, 23, 42, 0.4);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 12px;
-      padding: 24px 16px;
-      text-align: center;
+      padding: 24px 20px;
+      text-align: left;
       transition: transform 0.3s, border-color 0.3s;
+      cursor: pointer;
     }
 
     .domain-card:hover {
-      transform: translateY(-5px);
-      border-color: #a855f7;
+      transform: translateY(-4px);
+      border-color: #38bdf8;
     }
 
     .domain-icon {
-      font-size: 1.8rem;
+      font-size: 1.5rem;
+      color: #a855f7;
       margin-bottom: 12px;
     }
 
     .domain-card h4 {
-      font-size: 0.9rem;
-      margin-bottom: 8px;
+      font-size: 0.95rem;
+      margin-bottom: 6px;
     }
 
     .domain-card p {
-      font-size: 0.7rem;
+      font-size: 0.78rem;
       color: #64748b;
       line-height: 1.4;
-      margin-bottom: 16px;
-    }
-
-    .domain-card a {
-      font-size: 0.75rem;
-      color: #a855f7;
-      font-weight: 600;
     }
 
     /* Events Grid */
@@ -320,10 +324,12 @@
 
     .event-card {
       background: rgba(15, 23, 42, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 16px;
       overflow: hidden;
-      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .event-banner {
@@ -337,10 +343,11 @@
       position: absolute;
       top: 12px;
       left: 12px;
-      background: rgba(6, 9, 19, 0.8);
+      background: rgba(6, 9, 19, 0.85);
       border-radius: 8px;
       padding: 6px 10px;
       text-align: center;
+      backdrop-filter: blur(4px);
     }
 
     .event-date span {
@@ -357,6 +364,10 @@
 
     .event-details {
       padding: 16px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .event-details h4 {
@@ -365,77 +376,130 @@
     }
 
     .event-tags {
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       color: #64748b;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
     }
 
     .event-location {
       font-size: 0.75rem;
       color: #cbd5e1;
+      margin-bottom: 16px;
     }
 
-    .btn-center-wrapper {
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    /* Footer CTA Banner */
-    .cta-banner {
-      margin: 0 80px 80px 80px;
-      background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(249, 115, 22, 0.1));
+    /* Form Section */
+    .form-container {
+      max-width: 650px;
+      margin: 0 auto;
+      background: rgba(15, 23, 42, 0.6);
       border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 40px;
       border-radius: 20px;
-      padding: 60px 20px;
-      text-align: center;
     }
 
-    .cta-banner h2 {
-      font-size: 2rem;
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      color: #cbd5e1;
       margin-bottom: 8px;
     }
 
-    .cta-banner p {
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      background: rgba(6, 9, 19, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: #fff;
+      outline: none;
+    }
+
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: #38bdf8;
+    }
+
+    /* Interactive Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 32px;
+      border-radius: 16px;
+      max-width: 450px;
+      width: 90%;
+      position: relative;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      cursor: pointer;
       color: #94a3b8;
-      font-size: 0.9rem;
-      margin-bottom: 24px;
+      font-size: 1.2rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      color: #64748b;
+      font-size: 0.85rem;
     }
   </style>
 </head>
 <body>
 
+  <!-- Clean Social Icons Sidebar -->
   <div class="social-sidebar">
-    <a href="#">📷</a>
-    <a href="#">💼</a>
-    <a href="#">✉️</a>
+    <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    <a href="mailto:nexus@muj.manipal.edu" title="Email"><i class="far fa-envelope"></i></a>
   </div>
 
+  <!-- Navbar -->
   <nav class="navbar">
-    <div class="logo">
+    <div class="logo" onclick="window.scrollTo(0,0)">
       <div class="logo-icon"></div>
       <div>NEXUS<span>MUJ</span></div>
     </div>
     <ul class="nav-links">
-      <li><a href="#" class="active">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Events</a></li>
-      <li><a href="#">Domains</a></li>
-      <li><a href="#">Gallery</a></li>
-      <li><a href="#">Team</a></li>
-      <li><a href="#">Join Us</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#domains">Domains</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#join">Join Us</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="#" class="btn-gradient">Join Nexus &rarr;</a>
+    <a href="#join" class="btn-gradient">Join Nexus <i class="fas fa-arrow-right"></i></a>
   </nav>
 
+  <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
       <div class="tagline">UNITING MINDS. CREATING IMPACT.</div>
       <h1>Ideas.<br><span class="gradient-orange">Innovation.</span><br>Impact.</h1>
-      <p>NEXUS MUJ is the official student club that connects passion with purpose. We collaborate, create and contribute towards a better tomorrow.</p>
-      <div class="hero-btns">
-        <a href="#" class="btn-gradient">Explore Nexus &rarr;</a>
-        <a href="#" class="btn-outline">▶ Watch Video</a>
+      <p>NEXUS MUJ is the official student club that connects passion with purpose. We collaborate, create, and contribute towards a better tomorrow.</p>
+      <div style="display:flex; gap:16px;">
+        <a href="#events" class="btn-gradient">Explore Events <i class="fas fa-arrow-right"></i></a>
+        <button class="btn-outline" onclick="openVideoModal()"><i class="fas fa-play"></i> Watch Video</button>
       </div>
     </div>
 
@@ -444,11 +508,12 @@
       <div class="portal-logo">
         <div class="logo-icon" style="width:50px; height:50px; margin: 0 auto;"></div>
         <h2>NEXUS</h2>
-        <span>MUJ</span>
+        <span style="color:#f97316; letter-spacing:6px; font-size:0.8rem;">MUJ</span>
       </div>
     </div>
   </section>
 
+  <!-- Stats Bar -->
   <section class="stats-bar">
     <div class="stat-item">
       <h3>500+</h3>
@@ -459,7 +524,7 @@
       <p>Events Organized</p>
     </div>
     <div class="stat-item">
-      <h3>10+</h3>
+      <h3>5+</h3>
       <p>Domains</p>
     </div>
     <div class="stat-item">
@@ -468,51 +533,48 @@
     </div>
   </section>
 
-  <section class="section-container">
+  <!-- About & Domains Section -->
+  <section id="about" class="section-container">
     <div class="about-layout">
       <div class="about-text">
         <div class="section-tag">ABOUT US</div>
         <h2 class="section-title">What is NEXUS?</h2>
-        <p>We are a diverse community of innovators, creators and leaders from Manipal University Jaipur coming together to learn, build and grow.</p>
-        <a href="#">Know More About Us &rarr;</a>
+        <p>We are a diverse community of innovators, creators, and leaders from Manipal University Jaipur coming together to learn, build, and grow.</p>
+        <a href="#join" class="btn-outline">Know More About Us <i class="fas fa-arrow-right"></i></a>
       </div>
 
-      <div class="domains-grid">
-        <div class="domain-card">
-          <div class="domain-icon">💻</div>
+      <div id="domains" class="domains-grid">
+        <div class="domain-card" onclick="registerDomain('Tech & Dev')">
+          <div class="domain-icon"><i class="fas fa-code"></i></div>
           <h4>Tech & Dev</h4>
-          <p>Building solutions & exploring tech boundaries.</p>
-          <a href="#">Explore &rarr;</a>
+          <p>Building solutions, exploring tech & pushing boundaries.</p>
         </div>
-        <div class="domain-card">
-          <div class="domain-icon">🎨</div>
+        <div class="domain-card" onclick="registerDomain('Design & Media')">
+          <div class="domain-icon"><i class="fas fa-palette"></i></div>
           <h4>Design & Media</h4>
-          <p>Creating visuals and stories that inspire.</p>
-          <a href="#">Explore &rarr;</a>
+          <p>Creating visuals, stories, and experiences that inspire.</p>
         </div>
-        <div class="domain-card">
-          <div class="domain-icon">📢</div>
+        <div class="domain-card" onclick="registerDomain('Marketing')">
+          <div class="domain-icon"><i class="fas fa-bullhorn"></i></div>
           <h4>Marketing</h4>
-          <p>Strategizing and promoting impact.</p>
-          <a href="#">Explore &rarr;</a>
+          <p>Strategizing, promoting, and creating impact that matters.</p>
         </div>
-        <div class="domain-card">
-          <div class="domain-icon">👥</div>
+        <div class="domain-card" onclick="registerDomain('Management')">
+          <div class="domain-icon"><i class="fas fa-users-cog"></i></div>
           <h4>Management</h4>
-          <p>Leading ideas and managing events.</p>
-          <a href="#">Explore &rarr;</a>
+          <p>Leading ideas, managing events, and building leaders.</p>
         </div>
-        <div class="domain-card">
-          <div class="domain-icon">💚</div>
+        <div class="domain-card" onclick="registerDomain('Social Impact')">
+          <div class="domain-icon"><i class="fas fa-heart"></i></div>
           <h4>Social Impact</h4>
-          <p>Initiatives that give back and bring change.</p>
-          <a href="#">Explore &rarr;</a>
+          <p>Initiatives that give back and bring positive change.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section-container" style="padding-top: 0;">
+  <!-- Upcoming Events Section -->
+  <section id="events" class="section-container">
     <div class="section-tag">UPCOMING EVENTS</div>
     <h2 class="section-title">What's Next?</h2>
 
@@ -522,9 +584,12 @@
           <div class="event-date"><span>24</span><small>MAY</small></div>
         </div>
         <div class="event-details">
-          <h4>Tech Talk 2.0</h4>
-          <div class="event-tags">Talks &bull; Tech</div>
-          <div class="event-location">📍 Seminar Hall, MUJ</div>
+          <div>
+            <h4>Tech Talk 2.0</h4>
+            <div class="event-tags">Talks &bull; Tech</div>
+            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Seminar Hall, MUJ</div>
+          </div>
+          <button class="btn-outline" style="width:100%;" onclick="openEventModal('Tech Talk 2.0')">Register Now</button>
         </div>
       </div>
 
@@ -533,9 +598,12 @@
           <div class="event-date"><span>07</span><small>JUN</small></div>
         </div>
         <div class="event-details">
-          <h4>Nexus Hackathon</h4>
-          <div class="event-tags">Competition &bull; Tech</div>
-          <div class="event-location">📍 Innovation Lab, MUJ</div>
+          <div>
+            <h4>Nexus Hackathon</h4>
+            <div class="event-tags">Competition &bull; Tech</div>
+            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Innovation Lab, MUJ</div>
+          </div>
+          <button class="btn-outline" style="width:100%;" onclick="openEventModal('Nexus Hackathon')">Register Now</button>
         </div>
       </div>
 
@@ -544,9 +612,12 @@
           <div class="event-date"><span>21</span><small>JUN</small></div>
         </div>
         <div class="event-details">
-          <h4>Design Sprint</h4>
-          <div class="event-tags">Workshop &bull; Design</div>
-          <div class="event-location">📍 Studio Block, MUJ</div>
+          <div>
+            <h4>Design Sprint</h4>
+            <div class="event-tags">Workshop &bull; Design</div>
+            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Studio Block, MUJ</div>
+          </div>
+          <button class="btn-outline" style="width:100%;" onclick="openEventModal('Design Sprint')">Register Now</button>
         </div>
       </div>
 
@@ -555,23 +626,110 @@
           <div class="event-date"><span>05</span><small>JUL</small></div>
         </div>
         <div class="event-details">
-          <h4>Nexus Social Drive</h4>
-          <div class="event-tags">Initiative &bull; Social</div>
-          <div class="event-location">📍 Jaipur</div>
+          <div>
+            <h4>Nexus Social Drive</h4>
+            <div class="event-tags">Initiative &bull; Social</div>
+            <div class="event-location"><i class="fas fa-map-marker-alt"></i> Jaipur</div>
+          </div>
+          <button class="btn-outline" style="width:100%;" onclick="openEventModal('Nexus Social Drive')">Register Now</button>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="btn-center-wrapper">
-      <a href="#" class="btn-outline">View All Events &rarr;</a>
+  <!-- Join Us / Contact Form -->
+  <section id="join" class="section-container">
+    <div style="text-align:center; margin-bottom: 40px;">
+      <div class="section-tag">BE A PART OF SOMETHING BIGGER</div>
+      <h2 class="section-title">Join Nexus MUJ</h2>
+    </div>
+
+    <div class="form-container">
+      <form id="joinForm" onsubmit="handleFormSubmit(event)">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="studentName" placeholder="Enter your full name" required />
+        </div>
+        <div class="form-group">
+          <label>Registration Number</label>
+          <input type="text" placeholder="e.g. 239301xxx" required />
+        </div>
+        <div class="form-group">
+          <label>Preferred Domain</label>
+          <select id="domainSelect" required>
+            <option value="">Select Domain</option>
+            <option value="Tech & Dev">Tech & Dev</option>
+            <option value="Design & Media">Design & Media</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Management">Management</option>
+            <option value="Social Impact">Social Impact</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Why do you want to join Nexus?</label>
+          <textarea rows="4" placeholder="Tell us about your interests..." required></textarea>
+        </div>
+        <button type="submit" class="btn-gradient" style="width: 100%; justify-content: center;">Submit Application <i class="fas fa-paper-plane"></i></button>
+      </form>
     </div>
   </section>
 
-  <section class="cta-banner">
-    <h2>Be a Part of Something Bigger</h2>
-    <p>Collaborate. Create. Celebrate.</p>
-    <a href="#" class="btn-gradient">Join Nexus MUJ &rarr;</a>
-  </section>
+  <!-- Event Modal Popup -->
+  <div id="eventModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal()">&times;</span>
+      <h3 id="modalTitle" style="margin-bottom:12px; color:#38bdf8;">Event Registration</h3>
+      <p style="color:#94a3b8; font-size:0.85rem; margin-bottom:20px;">Confirm your registration for this official Nexus event.</p>
+      <form onsubmit="confirmEventRegistration(event)">
+        <div class="form-group">
+          <label>Student Name</label>
+          <input type="text" placeholder="Your Name" required />
+        </div>
+        <div class="form-group">
+          <label>MUJ Email ID</label>
+          <input type="email" placeholder="name@muj.manipal.edu" required />
+        </div>
+        <button type="submit" class="btn-gradient" style="width:100%; justify-content:center;">Confirm Seat</button>
+      </form>
+    </div>
+  </div>
 
+  <footer id="contact">
+    <p>&copy; 2026 Nexus Club MUJ. All rights reserved. | Official Student Body of Manipal University Jaipur.</p>
+  </footer>
+
+  <!-- Functionality Scripts -->
+  <script>
+    function openEventModal(eventName) {
+      document.getElementById('modalTitle').innerText = 'Register for ' + eventName;
+      document.getElementById('eventModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('eventModal').style.display = 'none';
+    }
+
+    function confirmEventRegistration(e) {
+      e.preventDefault();
+      alert('Registration successful! Check your MUJ email for event pass.');
+      closeModal();
+    }
+
+    function registerDomain(domainName) {
+      document.getElementById('domainSelect').value = domainName;
+      document.getElementById('join').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function openVideoModal() {
+      alert('Nexus Promo Video playing!');
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('studentName').value;
+      alert(`Thank you ${name}! Your application to Nexus MUJ has been submitted.`);
+      document.getElementById('joinForm').reset();
+    }
+  </script>
 </body>
 </html>
