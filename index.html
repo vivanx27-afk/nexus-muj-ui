@@ -41,12 +41,12 @@
     }
 
     .social-sidebar a {
-      transition: color 0.2s, transform 0.2s;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
 
     .social-sidebar a:hover {
       color: #38bdf8;
-      transform: scale(1.15);
+      transform: scale(1.25);
     }
 
     /* Fixed Glass Navbar */
@@ -78,6 +78,11 @@
       height: 32px;
       background: linear-gradient(135deg, #a855f7, #3b82f6);
       clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+      transition: transform 0.4s ease;
+    }
+
+    .logo:hover .logo-icon {
+      transform: rotate(180deg) scale(1.1);
     }
 
     .logo span {
@@ -113,15 +118,16 @@
       border: none;
       cursor: pointer;
       box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                  box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .btn-gradient:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(124, 58, 237, 0.6);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 8px 25px rgba(249, 115, 22, 0.5);
     }
 
     .btn-outline {
@@ -133,15 +139,16 @@
       color: #fff;
       background: transparent;
       cursor: pointer;
-      transition: background 0.2s, border-color 0.2s;
       display: inline-flex;
       align-items: center;
       gap: 8px;
+      transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
     }
 
     .btn-outline:hover {
       background: rgba(255, 255, 255, 0.08);
       border-color: #38bdf8;
+      transform: translateY(-2px);
     }
 
     /* Hero Section */
@@ -228,6 +235,12 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       text-align: center;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .stats-bar:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56, 189, 248, 0.3);
     }
 
     .stat-item h3 {
@@ -289,19 +302,27 @@
       border-radius: 12px;
       padding: 24px 20px;
       text-align: left;
-      transition: transform 0.3s, border-color 0.3s;
       cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                  border-color 0.3s ease, 
+                  box-shadow 0.3s ease;
     }
 
     .domain-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-6px);
       border-color: #38bdf8;
+      box-shadow: 0 10px 25px rgba(56, 189, 248, 0.15);
     }
 
     .domain-icon {
       font-size: 1.5rem;
       color: #a855f7;
       margin-bottom: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .domain-card:hover .domain-icon {
+      transform: scale(1.2);
     }
 
     .domain-card h4 {
@@ -330,6 +351,15 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                  border-color 0.3s ease, 
+                  box-shadow 0.3s ease;
+    }
+
+    .event-card:hover {
+      transform: translateY(-8px);
+      border-color: #f97316;
+      box-shadow: 0 12px 30px rgba(249, 115, 22, 0.2);
     }
 
     .event-banner {
@@ -337,6 +367,11 @@
       background-size: cover;
       background-position: center;
       position: relative;
+      transition: transform 0.5s ease;
+    }
+
+    .event-card:hover .event-banner {
+      transform: scale(1.05);
     }
 
     .event-date {
@@ -395,6 +430,11 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
       padding: 40px;
       border-radius: 20px;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-container:hover {
+      border-color: rgba(168, 85, 247, 0.3);
     }
 
     .form-group {
@@ -416,10 +456,12 @@
       border-radius: 8px;
       color: #fff;
       outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
       border-color: #38bdf8;
+      box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
     }
 
     /* Interactive Modal */
@@ -445,6 +487,18 @@
       max-width: 450px;
       width: 90%;
       position: relative;
+      animation: modalPop 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes modalPop {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     .close-modal {
@@ -454,6 +508,11 @@
       cursor: pointer;
       color: #94a3b8;
       font-size: 1.2rem;
+      transition: color 0.2s ease;
+    }
+
+    .close-modal:hover {
+      color: #fff;
     }
 
     /* Footer */
@@ -464,18 +523,60 @@
       color: #64748b;
       font-size: 0.85rem;
     }
+
+    /* ==========================================
+       ADDED KEYFRAME ANIMATIONS BELOW
+       ========================================== */
+
+    /* 1. Continuous Rotating Portal Ring */
+    @keyframes spinOrbit {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .portal-ring {
+      animation: spinOrbit 14s linear infinite;
+    }
+
+    /* 2. Pulsing Heading Glow */
+    @keyframes pulseGlow {
+      0%, 100% {
+        filter: drop-shadow(0 0 8px rgba(251, 146, 60, 0.3));
+      }
+      50% {
+        filter: drop-shadow(0 0 20px rgba(249, 115, 22, 0.6));
+      }
+    }
+
+    .gradient-orange {
+      animation: pulseGlow 4s ease-in-out infinite;
+    }
+
+    /* 3. Page Reveal Entrance Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-content, .hero-visual, .stats-bar, .domain-card, .event-card, .form-container {
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Clean Social Icons Sidebar -->
   <div class="social-sidebar">
     <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
     <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
     <a href="mailto:nexus@muj.manipal.edu" title="Email"><i class="far fa-envelope"></i></a>
   </div>
 
-  <!-- Navbar -->
   <nav class="navbar">
     <div class="logo" onclick="window.scrollTo(0,0)">
       <div class="logo-icon"></div>
@@ -491,7 +592,6 @@
     <a href="#join" class="btn-gradient">Join Nexus <i class="fas fa-arrow-right"></i></a>
   </nav>
 
-  <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
       <div class="tagline">UNITING MINDS. CREATING IMPACT.</div>
@@ -513,7 +613,6 @@
     </div>
   </section>
 
-  <!-- Stats Bar -->
   <section class="stats-bar">
     <div class="stat-item">
       <h3>500+</h3>
@@ -533,7 +632,6 @@
     </div>
   </section>
 
-  <!-- About & Domains Section -->
   <section id="about" class="section-container">
     <div class="about-layout">
       <div class="about-text">
@@ -573,7 +671,6 @@
     </div>
   </section>
 
-  <!-- Upcoming Events Section -->
   <section id="events" class="section-container">
     <div class="section-tag">UPCOMING EVENTS</div>
     <h2 class="section-title">What's Next?</h2>
@@ -637,7 +734,6 @@
     </div>
   </section>
 
-  <!-- Join Us / Contact Form -->
   <section id="join" class="section-container">
     <div style="text-align:center; margin-bottom: 40px;">
       <div class="section-tag">BE A PART OF SOMETHING BIGGER</div>
@@ -674,7 +770,6 @@
     </div>
   </section>
 
-  <!-- Event Modal Popup -->
   <div id="eventModal" class="modal">
     <div class="modal-content">
       <span class="close-modal" onclick="closeModal()">&times;</span>
@@ -698,7 +793,6 @@
     <p>&copy; 2026 Nexus Club MUJ. All rights reserved. | Official Student Body of Manipal University Jaipur.</p>
   </footer>
 
-  <!-- Functionality Scripts -->
   <script>
     function openEventModal(eventName) {
       document.getElementById('modalTitle').innerText = 'Register for ' + eventName;
